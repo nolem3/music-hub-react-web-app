@@ -1,0 +1,49 @@
+Ideas for Web Dev project:
+- Something with Spotify and music and making playlists
+	- Reviewer and creator?
+- Music Hub app
+	- users: reviewer, (playlist) creator, artist
+	- Web API: Napster? Spotify? Deezer?
+
+Users:
+- Listener
+- Creator
+
+Home:
+- Following (for listeners)
+- Trending Playlists
+- New Likes, Comments, Followers (for creators)
+
+Search Results:
+- Playlist section
+- Song section
+- Following section (for listeners)
+- My Creations section (for creators)
+
+Details pages:
+- Playlist details
+	- songs (with links to those detail pages)
+	- comments + likes
+- Song details
+	- various song details + what playlists it's a part of
+	- comments + likes
+
+Profile:
+- Creations
+- Followers
+- Following
+- Liked Playlists and Songs
+- Edit info page for person logged in
+
+
+Current Next Steps:
+- Web API working - session token via Redux (at some point)?
+- Cards displaying content --> Card grid component
+- Profile page (public + private stuff) after a user logs in
+- Basic unfinished Details page
+- Session functionality - keep user logged in
+- User type toggling
+- Database design time
+- Backend
+- Finish all screens with HTTP requests
+	- Implement search of our database

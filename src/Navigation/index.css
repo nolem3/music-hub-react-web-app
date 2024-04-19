@@ -1,0 +1,40 @@
+nav {
+    background-color: rgb(128, 21, 158);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a {
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+.mh-nav-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.mh-nav-item img {
+    height: 150px;
+}
+
+.mh-nav-item .mh-icon {
+    margin-right: 10px;
+    color: white;
+    font-size: 22px;
+}
+
+.mh-nav-item h3 {
+    color: white;
+    margin-right: 50px;
+}
+
+.mh-nav-item input {
+    height: 35px;
+    border-radius: 5px;
+    width: 80%;
+    font-size: 18px;
+}
