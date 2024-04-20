@@ -1,0 +1,37 @@
+.mh-details {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.mh-track-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.mh-track-details img {
+    width: 300px;
+}
+
+.mh-track-details .mh-artist-names {
+    display: flex;
+    flex-direction: row;
+}
+
+.mh-track-details .mh-artist-names h5 {
+    margin-right: 15px;
+}
+
+.mh-track-details audio {
+    margin-top: 10px;
+}
+
+.mh-comments {
+    flex-grow: 1;
+}
+
+.mh-track-playlists {
+    flex-grow: 1;
+}

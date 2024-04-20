@@ -35,15 +35,23 @@ Profile:
 - Liked Playlists and Songs
 - Edit info page for person logged in
 
+Playlist/Song Cards:
+- Image  -->  tracks.items.album.images[?]
+- Name  -->  tracks.items.name
+- Creator/Artist(s)  -->  tracks.items.artists.name
+- Id?  -->  tracks.items.id
+
 
 Current Next Steps:
-- Web API working - session token via Redux (at some point)?
-- Cards displaying content --> Card grid component
-- Profile page (public + private stuff) after a user logs in
-- Basic unfinished Details page
 - Session functionality - keep user logged in
+- Profile page (public + private stuff) after a user logs in
 - User type toggling
 - Database design time
 - Backend
 - Finish all screens with HTTP requests
 	- Implement search of our database
+
+Finished:
+- Web API working - access token via Redux (at some point)?
+- Cards displaying content --> Card grid component
+- Basic unfinished Details page
