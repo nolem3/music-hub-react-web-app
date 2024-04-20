@@ -4,7 +4,8 @@ import hubReducer from "../reducer";
 export interface HubState {
     hubReducer: {
         accessToken: String,
-        config: any
+        config: any,
+        userIsListener: boolean
     };
 }
 const store = configureStore({

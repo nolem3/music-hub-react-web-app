@@ -43,15 +43,18 @@ Playlist/Song Cards:
 
 
 Current Next Steps:
-- Session functionality - keep user logged in
-- Profile page (public + private stuff) after a user logs in
-- User type toggling
 - Database design time
 - Backend
-- Finish all screens with HTTP requests
+- Finish all screens with new HTTP requests
+	- Profile page (public + private stuff) after a user logs in
+	- Home Page
+	- Details Page
+	- Search Page
 	- Implement search of our database
 
 Finished:
 - Web API working - access token via Redux (at some point)?
 - Cards displaying content --> Card grid component
 - Basic unfinished Details page
+- Session functionality - keep user logged in
+- User type toggling (from Profile page)

@@ -32,6 +32,10 @@ a {
     margin-right: 50px;
 }
 
+.mh-nav-item h4 {
+    color: rgb(38, 26, 41);
+}
+
 .mh-nav-item input {
     height: 35px;
     border-radius: 5px;
