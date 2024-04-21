@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     accessToken: "",
     config: { headers: { } },
-    userIsListener: true
+    userIsListener: true,
+    loggedIn: false
 };
 
 const hubSlice = createSlice({
@@ -16,9 +17,15 @@ const hubSlice = createSlice({
         },
         toggleUserRole: (state) => {
             state.userIsListener = !state.userIsListener;
+        },
+        login: (state) => {
+            state.loggedIn = true;
+        },
+        logout: (state) => {
+            state.loggedIn = false;
         }
     },
 });
 
-export const { setAccessToken, toggleUserRole } = hubSlice.actions;
+export const { setAccessToken, toggleUserRole, login, logout } = hubSlice.actions;
 export default hubSlice.reducer;

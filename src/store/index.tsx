@@ -5,7 +5,8 @@ export interface HubState {
     hubReducer: {
         accessToken: String,
         config: any,
-        userIsListener: boolean
+        userIsListener: boolean,
+        loggedIn: boolean
     };
 }
 const store = configureStore({

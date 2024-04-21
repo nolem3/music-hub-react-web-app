@@ -3,14 +3,18 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import * as client from "../../Users/client"
 import { User } from "../../Users/client";
+import { useDispatch } from "react-redux";
+import { login } from "../../reducer";
 
 export default function Signup() {
     const [error, setError] = useState(null);
     const [user, setUser] = useState<User>({ username: "", password: "", firstName: "", lastName: "", email: "" });
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const signup = async () => {
         try {
             await client.signup(user);
+            dispatch(login());
             navigate("/Profile");
         } catch (err: any) {
             setError(err.response.data.message);

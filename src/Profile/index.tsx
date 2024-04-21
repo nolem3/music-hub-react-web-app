@@ -3,7 +3,8 @@ import * as client from "../Users/client"
 import { useSelector, useDispatch } from "react-redux";
 import { HubState } from "../store";
 import {
-    toggleUserRole
+    toggleUserRole,
+    logout
 } from "../reducer";
 
 export default function Profile() {
@@ -26,6 +27,11 @@ export default function Profile() {
     const userIsListener = useSelector((state: HubState) => state.hubReducer.userIsListener);
     const dispatch = useDispatch();
 
+    const userLogout = async () => {
+        const response = await client.logout();
+        dispatch(logout());
+    }
+
     return (
         <>
             {error ? <h3>{error}</h3> :
@@ -35,6 +41,8 @@ export default function Profile() {
                     <button onClick={() => dispatch(toggleUserRole())}>Toggle Role</button>
                     <br/>
                     <h2>Role: {userIsListener ? "Listener" : "Creator"}</h2>
+                    <br/>
+                    <button onClick={userLogout}>Logout</button>
                 </div>
             }
         </>
