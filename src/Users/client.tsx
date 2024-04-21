@@ -15,6 +15,7 @@ export const login = async (credentials: any) => {
     return response.data;
 };
 export const profile = async () => {
+    axios.defaults.withCredentials = true;
     const response = await axios.post(`${USERS_API}/profile`);
     return response.data;
 };

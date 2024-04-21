@@ -9,31 +9,24 @@ Users:
 - Listener
 - Creator
 
+
 Home:
 - Following (for listeners)
-- Trending Playlists
 - New Likes, Comments, Followers (for creators)
 
 Search Results:
-- Playlist section
-- Song section
 - Following section (for listeners)
-- My Creations section (for creators)
 
 Details pages:
 - Playlist details
-	- songs (with links to those detail pages)
 	- comments + likes
 - Song details
-	- various song details + what playlists it's a part of
 	- comments + likes
 
 Profile:
-- Creations
 - Followers
 - Following
-- Liked Playlists and Songs
-- Edit info page for person logged in
+
 
 Playlist/Song Cards:
 - Image  -->  tracks.items.album.images[?]
@@ -43,8 +36,14 @@ Playlist/Song Cards:
 
 
 Current Next Steps:
-- Database design time
-- Backend
+- Followers integration
+- Playlists integration
+	- PlaylistDetails page
+		- (Display likes and comments of playlist)
+		- Remove from playlist
+- Implement public Profile page
+- Follows integration
+- (Likes and) Comments?
 - Finish all screens with new HTTP requests
 	- Profile page (public + private stuff) after a user logs in
 	- Home Page
@@ -58,3 +57,4 @@ Finished:
 - Basic unfinished Details page
 - Session functionality - keep user logged in
 - User type toggling (from Profile page)
+- Database design

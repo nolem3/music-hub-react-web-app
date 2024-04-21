@@ -1,0 +1,54 @@
+.mh-profile-buttons {
+    position: absolute;
+    right: 30px;
+    top: 170px;
+    display: flex;
+    flex-direction: row;
+}
+
+.mh-profile-buttons button {
+    margin-right: 15px;
+}
+
+button {
+    height: 45px;
+    font-size: 18px;
+    background-color: rgb(128, 21, 158);
+    color: white;
+    border-radius: 4px;
+}
+
+.mh-profile {
+    margin-left: 30px;
+}
+
+.mh-profile-playlists {
+    display: flex;
+    flex-direction: row;
+}
+
+.mh-profile-playlists button {
+    position: absolute;
+    right: 40px;
+}
+
+.mh-profile-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.mh-profile-edit input {
+    height: 38px;
+    font-size: 18px;
+    border-radius: 4px;
+}
+
+.mh-profile-edit button {
+    height: 45px;
+    font-size: 18px;
+    background-color: rgb(128, 21, 158);
+    color: white;
+    border-radius: 4px;
+}

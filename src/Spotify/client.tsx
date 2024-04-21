@@ -42,3 +42,10 @@ export const fetchTrack = async (trackId: string, config: object) => {
 
     return response.data
 }
+
+export const fetchTracks = async (trackIds: string[], config: object) => {
+    axios.defaults.withCredentials = false;
+    const response = await axios.get(`https://api.spotify.com/v1/tracks?ids=${trackIds.join(",")}`, config);
+    axios.defaults.withCredentials = true;
+    return response.data;
+}

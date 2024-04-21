@@ -2,8 +2,11 @@ import { useLocation } from "react-router";
 import { useSelector } from "react-redux";
 import { HubState } from "../store";
 import { useState, useEffect } from "react";
-import * as spotifyClient from "../Spotify/client"
-import "./index.css"
+import * as spotifyClient from "../Spotify/client";
+import * as userClient from "../Users/client";
+import * as playlistClient from "../Playlists/client";
+import CardGrid from "../components/CardGrid";
+import "./index.css";
 
 export default function TrackDetails() {
     const { pathname } = useLocation();
@@ -23,34 +26,99 @@ export default function TrackDetails() {
 
     useEffect(() => {
         fetchTrackInfo();
-    }, [pathname])
+    }, [pathname]);
+
+    const [currentUsername, setCurrentUsername] = useState<any>(null);
+    const fetchProfile = async () => {
+        try {
+            const account = await userClient.profile();
+            setCurrentUsername(account.username);
+        } catch (err: any) {
+            console.log(err)
+        }
+    };
+    useEffect(() => {
+        fetchProfile();
+    }, []);
+
+    const [userPlaylists, setUserPlaylists] = useState([]);
+    const [canAppend, setCanAppend] = useState<boolean>(false);
+    const fetchUserPlaylists = async () => {
+        const result = await playlistClient.findPlaylistsOfCreator(currentUsername);
+        console.log(result)
+        setUserPlaylists(result);
+    }
+    useEffect(() => {
+        if (currentUsername) {
+            fetchUserPlaylists();
+            setCanAppend(track && currentUsername && !userIsListener);
+        }
+    }, [track]);
+
+    const userIsListener = useSelector((state: HubState) => state.hubReducer.userIsListener);
+    //const canAppend = track && currentUsername && !userIsListener;
+    const [selectedPlaylist, setSelectedPlaylist] = useState<any>(null);
+
+    const appendToPlaylist = async () => {
+        if (selectedPlaylist && selectedPlaylist !== "none") {
+            try {
+                const response = await playlistClient.appendTrackToPlaylist(selectedPlaylist, {trackId: track.id});
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    }
+
+    const [trackPlaylists, setTrackPlaylists] = useState<any>([]);
+    const fetchTrackPlaylists = async () => {
+        if (track) {
+            const allPlaylists = await playlistClient.findAllPlaylists();
+            const filteredPlaylists = allPlaylists.filter((p: any) => p.tracks.includes(track.id));
+            setTrackPlaylists(filteredPlaylists);
+        }
+    }
+    useEffect(() => {
+        fetchTrackPlaylists();
+    }, [track]);
 
     return (
-        <div className="mh-details">
-            {error ? error : (track &&
-                <div className="mh-track-details">
-                    <img src={track.album.images[0].url}></img>
-                    <h3>{track.name}</h3>
-                    <h4>{track.album.name}</h4>
-                    <div className="mh-artist-names">
-                        {track.artists.map((artist: any) => {
-                            return (
-                                <h5>
-                                    {artist.name}
-                                </h5>
-                            )
-                        })}
+        <div>
+            <div className="mh-details">
+                {error ? error : (track &&
+                    <div className="mh-track-details">
+                        <img src={track.album.images[0].url}></img>
+                        <h3>{track.name}</h3>
+                        <h4>{track.album.name}</h4>
+                        <div className="mh-artist-names">
+                            {track.artists.map((artist: any) => {
+                                return (
+                                    <h5>
+                                        {artist.name}
+                                    </h5>
+                                )
+                            })}
+                        </div>
+                        {track.preview_url && <audio controls src={track.preview_url}></audio>}
+                        {canAppend &&
+                            <div className="mh-append-track">
+                                <label htmlFor="playlists">Playlist</label>
+                                <select name="playlists" id="playlists" onChange={(e) => setSelectedPlaylist(e.target.value)}>
+                                    <option value="none"></option>
+                                    {userPlaylists.map((p: any) => <option value={p._id}>{p.name}</option>)}
+                                </select>
+                                <button onClick={appendToPlaylist}>Add</button>
+                            </div>}
                     </div>
-                    {track.preview_url && <audio controls src={track.preview_url}></audio>}
+                )}
+                <div className="mh-comments">
+                    <h3>Comments here</h3>
+                    {/* TODO: Comments */}
                 </div>
-            )}
-            <div className="mh-track-playlists">
-                <h3>Playlists here</h3>
-                {/* TODO: Playlists this track is on */}
             </div>
-            <div className="mh-comments">
-                <h3>Comments here</h3>
-                {/* TODO: Comments */}
+            <div className="mh-track-playlists">
+                <h3>Playlists</h3>
+                <hr />
+                {track && <CardGrid cardDetails={playlistClient.playlistsToCardDetails(trackPlaylists)} />}
             </div>
         </div>
     )

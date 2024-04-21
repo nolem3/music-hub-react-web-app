@@ -12,6 +12,7 @@ import Details from './Details';
 import Login from './Login';
 import Signup from './Login/Signup';
 import Search from './Search';
+import ProfileEdit from './Profile/Edit';
 import {
     setAccessToken
 } from "./reducer";
@@ -38,6 +39,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Navigate to="/Home" />}></Route>
                     <Route path="/Home/*" element={<Home />}></Route>
+                    <Route path="/Profile/Edit" element={<ProfileEdit />}></Route>
                     <Route path="/Profile/*" element={<Profile />}></Route>
                     <Route path="/Details/*" element={<Details />}></Route>
                     <Route path="/Login/" element={<Login />}></Route>
