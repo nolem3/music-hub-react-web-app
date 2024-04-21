@@ -6,6 +6,7 @@ import * as spotifyClient from "../Spotify/client";
 import { useSelector } from "react-redux";
 import { HubState } from "../store";
 import CardGrid from "../components/CardGrid";
+import { Link } from "react-router-dom";
 import "./index.css";
 
 export default function PlaylistDetails() {
@@ -56,10 +57,10 @@ export default function PlaylistDetails() {
 
     const [tracks, setTracks] = useState<any>([]);
     const fetchTracks = async () => {
-        if (playlist) {
-            console.log(playlist.tracks);
+        if (playlist && playlist.tracks[0]) {
+            //console.log(playlist.tracks);
             const response = await spotifyClient.fetchTracks(playlist.tracks, config);
-            console.log(response);
+            //console.log(response);
             setTracks(response.tracks);
         }
     }
@@ -77,7 +78,7 @@ export default function PlaylistDetails() {
                         {canEdit ?
                             <input type="text" value={playlist.name} onChange={(e) => setPlaylist({ ...playlist, name: e.target.value })}></input>
                             : <h3>{playlist.name}</h3>}
-                        <h4>{playlist.creatorName}</h4>
+                        <Link to={`/Profile/${playlist.creatorName}`}><h4>{playlist.creatorName}</h4></Link>
                         {canEdit && <button onClick={updatePlaylist}>Save</button>}
                         {canEdit && <button onClick={deletePlaylist} className="mh-delete-playlist-button">Delete</button>}
                     </div>)}

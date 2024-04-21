@@ -6,6 +6,7 @@ import "./index.css"
 import * as spotifyClient from "../Spotify/client";
 import * as playlistClient from "../Playlists/client";
 import * as userClient from "../Users/client";
+import * as followsClient from "../Follows/client";
 import CardGrid from "../components/CardGrid";
 
 export default function Search() {
@@ -49,16 +50,34 @@ export default function Search() {
     }, []);
     const userIsListener = useSelector((state: HubState) => state.hubReducer.userIsListener);
 
+    const [following, setFollowing] = useState<any>([]);
+    const fetchFollowData = async () => {
+        if (currentUsername) {
+            const userFollowingFollows = await followsClient.fetchFollowsByFollower(currentUsername);
+            console.log(userFollowingFollows);
+            setFollowing(userFollowingFollows.map((f: any) => f.followed));
+        }
+    };
+    useEffect(() => {
+        fetchFollowData();
+    }, [currentUsername]);
+
     return (
         <div className="mh-search">
             {/* TODO: other search results here */}
-            {!userIsListener &&
-                <div>
+            {!userIsListener ?
+                (currentUsername && <div>
                     <h2>My Playlists</h2>
                     <hr />
                     {playlists[0] && <CardGrid cardDetails={playlistClient.playlistsToCardDetails(
                         playlists.filter((p: any) => p.creatorName === currentUsername))} />}
-                </div>}
+                </div>) :
+                (currentUsername && <div>
+                    <h2>Following Playlists</h2>
+                    <hr />
+                    {playlists[0] && <CardGrid cardDetails={playlistClient.playlistsToCardDetails(
+                        playlists.filter((p: any) => following.includes(p.creatorName)))} />}
+                </div>)}
             <h2>All Playlists</h2>
             <hr />
             {playlists[0] && <CardGrid cardDetails={playlistClient.playlistsToCardDetails(playlists)} />}

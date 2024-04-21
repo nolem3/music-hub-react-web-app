@@ -11,11 +11,7 @@ Users:
 
 
 Home:
-- Following (for listeners)
-- New Likes, Comments, Followers (for creators)
-
-Search Results:
-- Following section (for listeners)
+- New Comments, Followers (for creators)
 
 Details pages:
 - Playlist details
@@ -24,8 +20,6 @@ Details pages:
 	- comments + likes
 
 Profile:
-- Followers
-- Following
 
 
 Playlist/Song Cards:
@@ -36,20 +30,12 @@ Playlist/Song Cards:
 
 
 Current Next Steps:
-- Followers integration
-- Playlists integration
-	- PlaylistDetails page
-		- (Display likes and comments of playlist)
-		- Remove from playlist
-- Implement public Profile page
-- Follows integration
 - (Likes and) Comments?
 - Finish all screens with new HTTP requests
 	- Profile page (public + private stuff) after a user logs in
 	- Home Page
 	- Details Page
 	- Search Page
-	- Implement search of our database
 
 Finished:
 - Web API working - access token via Redux (at some point)?
@@ -58,3 +44,4 @@ Finished:
 - Session functionality - keep user logged in
 - User type toggling (from Profile page)
 - Database design
+- Implement public Profile page

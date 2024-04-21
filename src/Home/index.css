@@ -5,9 +5,14 @@
 
 .mh-home > h2 {
     margin-bottom: 0;
+    margin-top: 30px;
 }
 
 .mh-home > h1 {
     margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.mh-home .row {
     margin-bottom: 30px;
 }

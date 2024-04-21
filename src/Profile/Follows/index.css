@@ -1,0 +1,19 @@
+.mh-profile-follows {
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.mh-profile-follows > div {
+    flex-grow: 1;
+}
+
+.mh-profile-follows a {
+    color: rgb(128, 21, 158);
+}
+
+.mh-profile-follows li {
+    font-size: 22px;
+    width: fit-content;
+}

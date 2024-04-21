@@ -15,6 +15,10 @@
     width: 300px;
 }
 
+.mh-track-details a {
+    color: rgb(128, 21, 158);
+}
+
 .mh-track-details .mh-artist-names {
     display: flex;
     flex-direction: row;

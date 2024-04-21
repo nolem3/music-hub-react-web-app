@@ -20,11 +20,20 @@ button {
 
 .mh-profile {
     margin-left: 30px;
+    margin-top: 30px;
+}
+
+.mh-profile > h5 {
+    margin-bottom: 15px;
 }
 
 .mh-profile-playlists {
     display: flex;
     flex-direction: row;
+}
+
+.mh-profile-playlists > h2 {
+    margin-bottom: 0;
 }
 
 .mh-profile-playlists button {
@@ -51,4 +60,8 @@ button {
     background-color: rgb(128, 21, 158);
     color: white;
     border-radius: 4px;
+}
+
+.mh-profile a{
+    color: rgb(128, 21, 158);
 }

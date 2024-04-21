@@ -10,6 +10,10 @@ export interface User {
 //     const response = await axios.post(`${USERS_API}`, user);
 //     return response.data;
 // };
+export const findUser = async (username: String) => {
+    const response = await axios.get(`${USERS_API}/${username}`);
+    return response.data;
+}
 export const login = async (credentials: any) => {
     const response = await axios.post(`${USERS_API}/login`, credentials);
     return response.data;

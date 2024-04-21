@@ -19,6 +19,7 @@ export const findAllPlaylists = async () => {
 export const findPlaylistsOfCreator = async (creator: String) => {
     axios.defaults.withCredentials = true
     const response = await axios.get(`${PLAYLISTS_API}/${creator}`);
+    console.log(response.data);
     return response.data;
 }
 

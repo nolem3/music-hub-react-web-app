@@ -16,6 +16,7 @@ import ProfileEdit from './Profile/Edit';
 import {
     setAccessToken
 } from "./reducer";
+import ProfileFollows from './Profile/Follows';
 //import './App.css';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                     <Route path="/" element={<Navigate to="/Home" />}></Route>
                     <Route path="/Home/*" element={<Home />}></Route>
                     <Route path="/Profile/Edit" element={<ProfileEdit />}></Route>
+                    <Route path="/Profile/Follows/*" element={<ProfileFollows />}></Route>
                     <Route path="/Profile/*" element={<Profile />}></Route>
                     <Route path="/Details/*" element={<Details />}></Route>
                     <Route path="/Login/" element={<Login />}></Route>
