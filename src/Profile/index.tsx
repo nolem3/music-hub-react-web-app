@@ -55,6 +55,7 @@ export default function Profile() {
     const userLogout = async () => {
         const response = await userClient.logout();
         dispatch(logout());
+        navigate("/Home");
     };
 
     const [playlists, setPlaylists] = useState<any>([]);
