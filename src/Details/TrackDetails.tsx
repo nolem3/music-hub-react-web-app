@@ -55,7 +55,7 @@ export default function TrackDetails() {
             fetchUserPlaylists();
             setCanAppend(track && currentUsername && !userIsListener);
         }
-    }, [track]);
+    }, [track, currentUsername]);
 
     const userIsListener = useSelector((state: HubState) => state.hubReducer.userIsListener);
     //const canAppend = track && currentUsername && !userIsListener;
