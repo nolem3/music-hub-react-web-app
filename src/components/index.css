@@ -6,3 +6,46 @@
 a {
     text-decoration: none;
 }
+
+.mh-comment-section {
+    flex-grow: 1;
+    margin-right: 30px;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgb(128, 21, 158);
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mh-comment-section textarea {
+    border-radius: 4px;
+    width: 100%;
+}
+
+.mh-comment-section > button {
+    width: 20%;
+    border-radius: 4px;
+    background-color: rgb(38, 26, 41);
+}
+
+.mh-comment-section ul {
+    padding-inline-start: 0;
+    margin-top: 15px;
+}
+
+.mh-comment-section li {
+    background-color: rgb(38, 26, 41);
+    list-style: none;
+}
+
+.mh-comment-section li > button {
+    background-color: red;
+    height: 30px;
+}
+
+.mh-comment-section a {
+    color: rgb(128, 21, 158);
+}

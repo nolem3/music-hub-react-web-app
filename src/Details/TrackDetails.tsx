@@ -4,8 +4,10 @@ import { HubState } from "../store";
 import { useState, useEffect } from "react";
 import * as spotifyClient from "../Spotify/client";
 import * as userClient from "../Users/client";
+import * as commentClient from "../Comments/client";
 import * as playlistClient from "../Playlists/client";
 import CardGrid from "../components/CardGrid";
+import CommentSection from "../components/CommentSection";
 import "./index.css";
 
 export default function TrackDetails() {
@@ -79,7 +81,16 @@ export default function TrackDetails() {
     }
     useEffect(() => {
         fetchTrackPlaylists();
+        fetchComments();
     }, [track]);
+
+    const [comments, setComments] = useState<any>([]);
+    const fetchComments = async () => {
+        if (track) {
+            const response = await commentClient.fetchCommentsFor(track.id, true);
+            setComments(response);
+        }
+    }
 
     return (
         <div>
@@ -112,7 +123,7 @@ export default function TrackDetails() {
                 )}
                 <div className="mh-comments">
                     <h3>Comments here</h3>
-                    {/* TODO: Comments */}
+                    {track && <CommentSection comments={comments} itemId={track.id} isTrack={true}/>}
                 </div>
             </div>
             <div className="mh-track-playlists">

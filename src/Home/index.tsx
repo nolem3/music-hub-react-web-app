@@ -9,11 +9,6 @@ import "./index.css";
 
 export default function Home() {
 
-    /*
-        TODO
-        Following (for listeners)
-        Recent Likes, Comments, and Follows (for creators)
-    */
     const [currentUsername, setCurrentUsername] = useState();
     const fetchProfile = async () => {
         try {
@@ -50,7 +45,7 @@ export default function Home() {
     return (
         <div className="mh-home">
             <h1>{currentUsername ? `Welcome back to Music Hub, ${currentUsername}!` : "Welcome to Music Hub!"}</h1>
-            {userIsListener &&
+            {currentUsername && userIsListener &&
                 <>
                     <h2>Following Playlists</h2>
                     <hr />

@@ -3,11 +3,13 @@ import { useLocation, useNavigate } from "react-router";
 import * as client from "../Playlists/client";
 import * as userClient from "../Users/client";
 import * as spotifyClient from "../Spotify/client";
+import * as commentClient from "../Comments/client";
 import { useSelector } from "react-redux";
 import { HubState } from "../store";
 import CardGrid from "../components/CardGrid";
 import { Link } from "react-router-dom";
 import "./index.css";
+import CommentSection from "../components/CommentSection";
 
 export default function PlaylistDetails() {
     const homeImage = "/images/mhlogo.png"
@@ -67,7 +69,16 @@ export default function PlaylistDetails() {
     useEffect(() => {
         //console.log(playlist);
         fetchTracks();
+        fetchComments();
     }, [playlist]);
+
+    const [comments, setComments] = useState<any>([]);
+    const fetchComments = async () => {
+        if (playlist) {
+            const response = await commentClient.fetchCommentsFor(playlist._id, false);
+            setComments(response);
+        }
+    }
 
     return (
         <div>
@@ -84,7 +95,7 @@ export default function PlaylistDetails() {
                     </div>)}
                 <div className="mh-comments">
                     <h3>Comments here</h3>
-                    {/* TODO: Comments */}
+                    {playlist && <CommentSection comments={comments} itemId={playlist._id} isTrack={false}/>}
                 </div>
             </div>
             <div className="mh-playlist-tracks">

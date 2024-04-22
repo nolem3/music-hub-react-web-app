@@ -10,32 +10,12 @@ Users:
 - Creator
 
 
-Home:
-- New Comments, Followers (for creators)
-
-Details pages:
-- Playlist details
-	- comments + likes
-- Song details
-	- comments + likes
-
-Profile:
-
-
 Playlist/Song Cards:
 - Image  -->  tracks.items.album.images[?]
 - Name  -->  tracks.items.name
 - Creator/Artist(s)  -->  tracks.items.artists.name
 - Id?  -->  tracks.items.id
 
-
-Current Next Steps:
-- (Likes and) Comments?
-- Finish all screens with new HTTP requests
-	- Profile page (public + private stuff) after a user logs in
-	- Home Page
-	- Details Page
-	- Search Page
 
 Finished:
 - Web API working - access token via Redux (at some point)?
