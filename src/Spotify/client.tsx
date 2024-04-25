@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchSearchResult = async (searchQuery: String, config: object) => {
     //const prevWithCredentials = axios.defaults.withCredentials;
     axios.defaults.withCredentials = false;
-    
+
     //console.log('https://api.spotify.com/v1/search?q=' + searchQuery + '&type=track')
     const response = await axios.get('https://api.spotify.com/v1/search?q=' + searchQuery + '&type=track', config)
 
@@ -13,22 +13,33 @@ export const fetchSearchResult = async (searchQuery: String, config: object) => 
     return response.data.tracks.items
 }
 
-export const tracksToCardDetails = (tracks: any) => {
+export const tracksToCardDetails = (tracks: any, onRemove?: any) => {
     return tracks.map((track: any) => {
         const name = track.name;
         const image = track.album.images[0].url
         let artistsAsString = ""
-        track.artists.forEach((artist: any)  => {
+        track.artists.forEach((artist: any) => {
             artistsAsString += artist.name + " "
         });
         const creator = artistsAsString
-        const id = track.id
-        return {
-            name: name,
-            image: image,
-            creator: creator,
-            id: id,
-            isTrack: true
+        const id = track.id;
+        if (onRemove) {
+            return {
+                name: name,
+                image: image,
+                creator: creator,
+                id: id,
+                isTrack: true,
+                onDelete: () => onRemove(id)
+            }
+        } else {
+            return {
+                name: name,
+                image: image,
+                creator: creator,
+                id: id,
+                isTrack: true
+            }
         }
     });
 }

@@ -3,6 +3,13 @@
     color: white;
 }
 
+.col button {
+    background-color: red;
+    height: 30px;
+    position: relative;
+    top: -25px;
+}
+
 a {
     text-decoration: none;
 }
@@ -23,12 +30,15 @@ a {
 .mh-comment-section textarea {
     border-radius: 4px;
     width: 100%;
+    height: 60px;
+    margin-bottom: 0px;
 }
 
-.mh-comment-section > button {
+.mh-comment-section > div > button {
     width: 20%;
     border-radius: 4px;
     background-color: rgb(38, 26, 41);
+    margin-top: 0px;
 }
 
 .mh-comment-section ul {
@@ -48,4 +58,8 @@ a {
 
 .mh-comment-section a {
     color: rgb(128, 21, 158);
+}
+
+.mh-comment-section h2 {
+    align-self: center;
 }

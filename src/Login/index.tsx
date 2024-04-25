@@ -27,9 +27,11 @@ export default function Login() {
         <div className="mh-login">
             <h1>Login</h1>
             <br />
-            <input type="text" placeholder="Username" onChange={(e) => { setCredentials({ ...credentials, username: e.target.value }) }}></input>
+            <label htmlFor="username">Username:</label>
+            <input type="text" id="username" placeholder="Username" onChange={(e) => { setCredentials({ ...credentials, username: e.target.value }) }}></input>
             <br />
-            <input type="text" placeholder="Password" onChange={(e) => { setCredentials({ ...credentials, password: e.target.value }) }}></input>
+            <label htmlFor="password">Password:</label>
+            <input type="password" id="password" placeholder="Password" onChange={(e) => { setCredentials({ ...credentials, password: e.target.value }) }}></input>
             <br />
             <button onClick={userLogin}>Login</button>
             <br />

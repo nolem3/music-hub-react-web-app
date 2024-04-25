@@ -36,13 +36,17 @@ export default function ProfileEdit() {
                 <div className="mh-profile-edit">
                     <h1>Edit</h1>
                     <br />
-                    <input type="text" placeholder="First Name" value={profile.firstName} onChange={(e) => { setProfile({ ...profile, firstName: e.target.value }) }}></input>
+                    <label htmlFor="firstName">First Name:</label>
+                    <input type="text" id="firstName" placeholder="First Name" value={profile.firstName} onChange={(e) => { setProfile({ ...profile, firstName: e.target.value }) }}></input>
                     <br />
-                    <input type="text" placeholder="Last Name" value={profile.lastName} onChange={(e) => { setProfile({ ...profile, lastName: e.target.value }) }}></input>
+                    <label htmlFor="lastName">Last Name:</label>
+                    <input type="text" id="lastName" placeholder="Last Name" value={profile.lastName} onChange={(e) => { setProfile({ ...profile, lastName: e.target.value }) }}></input>
                     <br />
-                    <input type="text" placeholder="Email" value={profile.email} onChange={(e) => { setProfile({ ...profile, email: e.target.value }) }}></input>
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" id="email" placeholder="Email" value={profile.email} onChange={(e) => { setProfile({ ...profile, email: e.target.value }) }}></input>
                     <br />
-                    <input type="text" placeholder="Password" value={profile.password} onChange={(e) => { setProfile({ ...profile, password: e.target.value }) }}></input>
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" id="password" placeholder="Password" value={profile.password} onChange={(e) => { setProfile({ ...profile, password: e.target.value }) }}></input>
                     <br />
                     <button onClick={updateProfile}>Submit</button>
                 </div>}

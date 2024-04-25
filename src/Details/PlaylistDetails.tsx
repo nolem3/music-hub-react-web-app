@@ -4,6 +4,7 @@ import * as client from "../Playlists/client";
 import * as userClient from "../Users/client";
 import * as spotifyClient from "../Spotify/client";
 import * as commentClient from "../Comments/client";
+import * as playlistClient from "../Playlists/client";
 import { useSelector } from "react-redux";
 import { HubState } from "../store";
 import CardGrid from "../components/CardGrid";
@@ -60,10 +61,14 @@ export default function PlaylistDetails() {
     const [tracks, setTracks] = useState<any>([]);
     const fetchTracks = async () => {
         if (playlist && playlist.tracks[0]) {
-            //console.log(playlist.tracks);
-            const response = await spotifyClient.fetchTracks(playlist.tracks, config);
-            //console.log(response);
-            setTracks(response.tracks);
+            try {
+                //console.log(playlist.tracks);
+                const response = await spotifyClient.fetchTracks(playlist.tracks, config);
+                //console.log(response);
+                setTracks(response.tracks);
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
     useEffect(() => {
@@ -77,6 +82,21 @@ export default function PlaylistDetails() {
         if (playlist) {
             const response = await commentClient.fetchCommentsFor(playlist._id, false);
             setComments(response);
+        }
+    }
+
+    const removeTrack = async (track: string) => {
+        if (playlist) {
+            try {
+                const response = await playlistClient.updatePlaylist(
+                    {
+                        ...playlist,
+                        tracks: playlist.tracks.filter((t: any) => t !== track)
+                    });
+                window.location.reload();
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 
@@ -95,14 +115,20 @@ export default function PlaylistDetails() {
                     </div>)}
                 <div className="mh-comments">
                     <h3>Comments here</h3>
-                    {playlist && <CommentSection comments={comments} itemId={playlist._id} isTrack={false}/>}
+                    {playlist && <CommentSection comments={comments} itemId={playlist._id} isTrack={false} />}
                 </div>
             </div>
             <div className="mh-playlist-tracks">
                 <h3>Tracks</h3>
                 <hr />
-                {playlist && <CardGrid cardDetails={spotifyClient.tracksToCardDetails(tracks)} />}
-                {/* TODO: deleting track functionality*/}
+                {(currentUsername && playlist && !userIsListener && currentUsername === playlist.creatorName) ?
+                    <>
+                        <CardGrid cardDetails={spotifyClient.tracksToCardDetails(tracks, removeTrack)} />
+                    </>
+                    :
+                    <>
+                        {playlist && <CardGrid cardDetails={spotifyClient.tracksToCardDetails(tracks)} />}
+                    </>}
             </div>
         </div>
     )

@@ -65,6 +65,7 @@ export default function TrackDetails() {
         if (selectedPlaylist && selectedPlaylist !== "none") {
             try {
                 const response = await playlistClient.appendTrackToPlaylist(selectedPlaylist, {trackId: track.id});
+                window.location.reload();
             } catch (err) {
                 console.log(err);
             }

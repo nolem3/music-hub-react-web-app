@@ -17,6 +17,7 @@ import {
     setAccessToken
 } from "./reducer";
 import ProfileFollows from './Profile/Follows';
+import CreatorView from './Profile/Creator';
 //import './App.css';
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
                     <Route path="/Home/*" element={<Home />}></Route>
                     <Route path="/Profile/Edit" element={<ProfileEdit />}></Route>
                     <Route path="/Profile/Follows/*" element={<ProfileFollows />}></Route>
+                    <Route path="/Profile/Creator" element={<CreatorView />}></Route>
                     <Route path="/Profile/*" element={<Profile />}></Route>
                     <Route path="/Details/*" element={<Details />}></Route>
                     <Route path="/Login/" element={<Login />}></Route>

@@ -1,0 +1,15 @@
+.mh-playlists {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.mh-playlists h2 {
+    margin-bottom: 0px;
+    margin-top: 30px;
+}
+
+.mh-playlists a {
+    color: rgb(128, 21, 158);   
+}

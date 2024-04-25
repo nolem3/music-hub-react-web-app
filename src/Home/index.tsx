@@ -53,6 +53,14 @@ export default function Home() {
                         <CardGrid cardDetails={playlistClient.playlistsToCardDetails(
                             playlists.filter((p: any) => following.includes(p.creatorName)))} />}
                 </>}
+            {currentUsername && !userIsListener &&
+                <>
+                    <h2>My Playlists</h2>
+                    <hr />
+                    {playlists[0] &&
+                        <CardGrid cardDetails={playlistClient.playlistsToCardDetails(
+                            playlists.filter((p: any) => currentUsername === p.creatorName))} />}
+                </>}
             <h2>Trending Playlists</h2>
             <hr />
             {playlists[0] && <CardGrid cardDetails={playlistClient.playlistsToCardDetails(playlists)} />}

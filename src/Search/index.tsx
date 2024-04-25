@@ -64,7 +64,6 @@ export default function Search() {
 
     return (
         <div className="mh-search">
-            {/* TODO: other search results here */}
             {!userIsListener ?
                 (currentUsername && <div>
                     <h2>My Playlists</h2>

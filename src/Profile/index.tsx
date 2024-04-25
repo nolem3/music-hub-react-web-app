@@ -112,6 +112,7 @@ export default function Profile() {
                 <div className="mh-profile">
                     <h1>{profile.username}'s Profile</h1>
                     <h5>{profile.firstName} {profile.lastName}</h5>
+                    {!publicUser && <h5>{profile.email}</h5>}
                     <h5><Link to={`/Profile/Follows/${profile.username}`}>{followers.length} Followers</Link></h5>
                     <h5><Link to={`/Profile/Follows/${profile.username}`}>{following.length} Following</Link></h5>
                     {!publicUser ?
@@ -128,10 +129,14 @@ export default function Profile() {
                         </div>}
                     <div className="mh-profile-playlists">
                         <h2>Playlists</h2>
-                        {!userIsListener && !publicUser && <button onClick={createPlaylist}>New Playlist</button>}
+                        {!userIsListener && !publicUser &&
+                            <div className="mh-profile-playlists-buttons">
+                                <button onClick={() => navigate("/Profile/Creator")}>Creator View</button>
+                                <button onClick={createPlaylist}>New Playlist</button>
+                            </div>}
                     </div>
                     <hr />
-                    <div>
+                    <div className="mh-profile-playlist-details">
                         <CardGrid cardDetails={playlistClient.playlistsToCardDetails(playlists)} />
                     </div>
                 </div >

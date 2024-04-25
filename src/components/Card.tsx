@@ -6,7 +6,8 @@ export interface CardDetails {
     isTrack: boolean,
     image: string,
     name: string,
-    creator: string
+    creator: string,
+    onDelete?: any
 }
 
 export default function Card(cardDetails: CardDetails) {
@@ -22,6 +23,11 @@ export default function Card(cardDetails: CardDetails) {
                     </div>
                 </div>
             </Link>
+            {cardDetails.onDelete &&
+                <>
+                    <br />
+                    <button onClick={cardDetails.onDelete}>Remove</button>
+                </>}
         </div>
     )
 }

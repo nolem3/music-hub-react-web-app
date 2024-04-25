@@ -25,3 +25,10 @@ Finished:
 - User type toggling (from Profile page)
 - Database design
 - Implement public Profile page
+
+
+
+Final TODO:
+- Test multiple users can login at the same time
+Maybe:
+- make Details and Profile pages more responsive

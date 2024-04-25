@@ -46,12 +46,14 @@ export default function CommentSection({ comments, itemId, isTrack }: LoComments
     const [currentComment, setCurrentComment] = useState<any>("");
 
     const createComment = async () => {
-        try {
-            const response = await commentClient.createComment(
-                { commenter: currentUsername, itemCommentedOn: itemId, isTrack: isTrack, message: currentComment });
-            window.location.reload();
-        } catch (err) {
-
+        if (currentComment !== "") {
+            try {
+                const response = await commentClient.createComment(
+                    { commenter: currentUsername, itemCommentedOn: itemId, isTrack: isTrack, message: currentComment });
+                window.location.reload();
+            } catch (err) {
+    
+            }
         }
     }
 
@@ -60,10 +62,12 @@ export default function CommentSection({ comments, itemId, isTrack }: LoComments
     return (
         <div className="mh-comment-section">
             {currentUsername && userIsListener &&
-                <>
+                <div>
                     <textarea placeholder="Comment Something" onChange={(e) => setCurrentComment(e.target.value)}></textarea>
                     <button onClick={createComment}>Comment</button>
-                </>}
+                </div>}
+                {!currentUsername && <h2>Login to comment!</h2>}
+                {currentUsername && !userIsListener && <h2>Toggle to Listener Role to comment!</h2>}
             <ul>
                 {comments.map((c) =>
                     <li>
